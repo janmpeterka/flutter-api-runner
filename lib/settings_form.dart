@@ -54,6 +54,7 @@ class _SettingsFormState extends State<SettingsForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Text("Toggl API key"),
           TextFormField(
             controller: _togglTokenController,
             validator: (value) {
