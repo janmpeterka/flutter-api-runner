@@ -5,8 +5,8 @@ import 'package:apirunner/command.dart';
 
 
 class TogglSettings {
-  static const PID_PROJECT_MAINTENANCE = 149366203;
-  static var apiToken = "myapitoken";
+//  static const PID_PROJECT_MAINTENANCE = 149366203;
+  static var apiToken = "placeholdertoken";
   String url = "https://" + apiToken + ":api_token@www.toggl.com";
 
   factory TogglSettings._() => null;
@@ -35,7 +35,8 @@ class TogglStartTimeEntry extends PostCommand with TogglSettings {
   static final apiUrl = "/api/v8/time_entries/start";
 
   var body =
-      '{"time_entry":{"description":"Flutter test", "pid":${TogglSettings.PID_PROJECT_MAINTENANCE}, "created_with":"flutter" }}';
+//      '{"time_entry":{"description":"Flutter test", "pid":${TogglSettings.PID_PROJECT_MAINTENANCE}, "created_with":"flutter" }}';
+      '{"time_entry":{"description":"Flutter test", "created_with":"flutter" }}';
 
   @override
   Future<String> run() async {
