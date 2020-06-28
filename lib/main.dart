@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'command_list.dart';
 import 'command_detail.dart';
 import 'settings_page.dart';
+import 'logs_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
     routes: {
       '/': (context) => CommandList(),
       '/detail': (context) => CommandDetail(),
-      '/settings': (context) => SettingsPage()
+      '/settings': (context) => SettingsPage(),
+      '/logs': (context) => LogsPage()
     });
   }
 }
