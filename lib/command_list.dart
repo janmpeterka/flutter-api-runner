@@ -10,8 +10,8 @@ class CommandList extends StatefulWidget {
 
 class CommandListState extends State<CommandList> {
   List<Command> _commandList = [
-    TogglGetCurrent("Get current"),
-    TogglStartTimeEntry("Start new"),
+//    TogglGetCurrent("Get current"),
+    TogglStartTimeEntry("Start new entry"),
     TogglStopEntry("Stop current entry")
   ];
 
@@ -21,7 +21,8 @@ class CommandListState extends State<CommandList> {
       appBar: AppBar(
         title: Text('Command list'),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: (){Navigator.pushNamed(context, "/settings");}),
+          IconButton(icon: Icon(Icons.settings), onPressed: (){Navigator.pushNamed(context, "/settings");}),
+          IconButton(icon: Icon(Icons.list), onPressed: (){Navigator.pushNamed(context, "/logs");}),
         ],
       ),
       body: _buildList(),
