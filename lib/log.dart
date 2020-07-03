@@ -9,7 +9,8 @@ class Log extends Object {
   Log(this.body);
 
   save() async {
-    lastAction += (this.body+ "\n");
+    DateTime now = new DateTime.now();
+    lastAction += ("command $body ran at $now \n");
     print("log saved");
   }
 }
