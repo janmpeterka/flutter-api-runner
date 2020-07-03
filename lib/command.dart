@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'log.dart';
+
 
 class Command extends Object {
   String name;
@@ -10,11 +12,19 @@ class Command extends Object {
   Command(this.name);
 
   // ignore: missing_return
-  Future<String> run() async {}
+  Future<String> run() async {
+    Log(this.name).save();
+  }
 
-  Future<String> getShared() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return (prefs.getString('togglToken') ?? "not in memory");
+  Future<String> getTogglToken() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String token = preferences.getString('togglToken');
+    if (token == null){
+      print("some trouble");
+      throw("toggl token not in memory");
+    } else {
+      return (token);
+    }
   }
 }
 
@@ -48,9 +58,9 @@ class PostCommand extends Command {
   String body;
 
   @override
-  Future<String> run() async {
-    print("starting");
+  Future<String> run() async {;
     var response = await this._getResponse();
+    super.run();
     return response;
   }
 

@@ -18,7 +18,12 @@ class TogglGetCurrent extends GetCommand {
 
   @override
   Future<String> run() async {
-    String token = await this.getShared();
+    String token;
+    try {
+      token = await this.getTogglToken();
+    } catch (error) {
+      return error.toString();
+    }
     String url = "https://" + token + ":api_token@www.toggl.com";
     this.completeUrl = (url + apiUrl);
     return super.run();
@@ -40,11 +45,17 @@ class TogglStartTimeEntry extends PostCommand with TogglSettings {
 
   @override
   Future<String> run() async {
-    String token = await this.getShared();
-    String url = "https://" + token + ":api_token@www.toggl.com";
-    this.completeUrl = (url + apiUrl);
-    return super.run();
-  }
+    String token;
+    try {
+      token = await this.getTogglToken();
+    } catch (error) {
+      return error.toString();
+    }
+      print("got token " + token.toString());
+      String url = "https://" + token + ":api_token@www.toggl.com";
+      this.completeUrl = (url + apiUrl);
+      return super.run();
+    }
 }
 
 class TogglStopEntry extends PutCommand with TogglSettings {
@@ -54,7 +65,12 @@ class TogglStopEntry extends PutCommand with TogglSettings {
 
   @override
   Future<String> run() async{
-    String token = await this.getShared();
+    String token;
+    try {
+      token = await this.getTogglToken();
+    } catch (error) {
+      return error.toString();
+    }
     String url = "https://" + token + ":api_token@www.toggl.com";
     String currentEntry = await TogglGetCurrent("placeholder").run();
     this.completeUrl = (url + apiUrl).replaceAll("{time_entry_id}", currentEntry);
