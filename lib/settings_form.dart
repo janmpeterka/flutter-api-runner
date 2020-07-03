@@ -1,8 +1,8 @@
-import 'dart:ffi';
+//import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-import 'toggl.dart';
+//import 'toggl.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -34,10 +34,10 @@ class _SettingsFormState extends State<SettingsForm> {
     print("shared set:" + prefs.getString('togglToken'));
   }
 
-  Future<String> _getShared() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return (prefs.getString('togglToken') ?? "not in memory");
-  }
+//  Future<String> _getShared() async {
+//    SharedPreferences prefs = await SharedPreferences.getInstance();
+//    return (prefs.getString('togglToken') ?? "not in memory");
+//  }
 
   @override
   void initState() {

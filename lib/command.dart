@@ -58,7 +58,7 @@ class PostCommand extends Command {
   String body;
 
   @override
-  Future<String> run() async {;
+  Future<String> run() async {
     var response = await this._getResponse();
     super.run();
     return response;
@@ -68,7 +68,7 @@ class PostCommand extends Command {
     print(this.body);
     var response =
         await http.post(this.completeUrl, body: this.body);
-    var responseBody = json.decode(response.body.toString());
+//    var responseBody = json.decode(response.body.toString());
     var returnValue = this.parseData(response);
     return returnValue;
   }
@@ -97,7 +97,7 @@ class PutCommand extends Command {
   Future<String> _getResponse() async {
     var response =
     await http.put(this.completeUrl);
-    var responseBody = json.decode(response.body.toString());
+//    var responseBody = json.decode(response.body.toString());
     var returnValue = this.parseData(response);
     return returnValue;
   }
@@ -105,7 +105,7 @@ class PutCommand extends Command {
   Future<String> parseData(response) async {
     int responseCode = response.statusCode;
     if (responseCode == 200){
-      return "${name} successful";
+      return "$name successful";
     } else {
       return "Something wrong happened.";
     }

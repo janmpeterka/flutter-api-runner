@@ -10,5 +10,6 @@ class Log extends Object {
 
   save() async {
     lastAction += (this.body+ "\n");
+    print("log saved");
   }
 }
