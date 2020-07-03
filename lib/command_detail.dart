@@ -18,7 +18,7 @@ class CommandDetailState extends State<CommandDetail> {
       appBar: AppBar(
         title: Text(command.name),
       ),
-      body: Text(command.name),
+      body: Text("Name: ${command.name}"),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           var response = command.run();
